@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import li.bfih.cryptopredictstream.currency.CryptoCurrencyRepository
 import li.bfih.cryptopredictstream.currency.CurrencyEntry
+import li.bfih.cryptopredictstream.serialization.SerializationConfig
 import org.apache.kafka.clients.producer.Producer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -16,7 +17,7 @@ object Loader  {
     private var currentDate : LocalDate = LocalDate.now()
     private val logger: Logger = LoggerFactory.getLogger(Producer::class.java)
     private const val TOPIC = "users"
-    private val mapper = ObjectMapper().registerModule(KotlinModule())
+    private val mapper = SerializationConfig.getMapper()
 
     fun sendMessage(kafkaTemplate: KafkaTemplate<String, String?>) {
         val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)

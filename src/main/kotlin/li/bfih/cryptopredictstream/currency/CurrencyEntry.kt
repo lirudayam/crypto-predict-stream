@@ -1,13 +1,13 @@
 package li.bfih.cryptopredictstream.currency
 
-import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
-import java.time.LocalDate
+import java.sql.Date
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class CurrencyEntry(
         @JsonProperty("symbol") var symbol: String,
-        @JsonProperty("date") var date: LocalDate,
+        @JsonFormat
+        (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy") var date: Date,
         @JsonProperty("rankNow") var rankNow: Int,
         @JsonProperty("open") var open: Float,
         @JsonProperty("high") var high: Float,
