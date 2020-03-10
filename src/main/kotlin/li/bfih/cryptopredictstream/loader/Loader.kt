@@ -5,6 +5,7 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import li.bfih.cryptopredictstream.currency.CryptoCurrencyRepository
 import li.bfih.cryptopredictstream.currency.CurrencyEntry
 import li.bfih.cryptopredictstream.serialization.SerializationConfig
+import li.bfih.cryptopredictstream.service.StreamListenerRepository
 import org.apache.kafka.clients.producer.Producer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -26,9 +27,21 @@ object Loader  {
     }
 
     fun startLoad() {
-        addDataToRepos();
+        addDataToRepos()
         currentDate = CryptoCurrencyRepository.minDate
         logger.info("Loading completed")
+
+        makeJumpStart(50)
+        logger.info("Jump start completed")
+    }
+
+    private fun makeJumpStart(days: Int) {
+        for (i in 1..days) {
+            val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)
+            list.forEach { entry -> StreamListenerRepository.addJumpStartEntry(entry) }
+            currentDate = currentDate.plusDays(1)
+            print(currentDate)
+        }
     }
 
     private fun addDataToRepos() {

@@ -2,7 +2,7 @@ package li.bfih.cryptopredictstream.currency
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
-import java.sql.Date
+import java.util.Date
 
 data class CurrencyEntry(
         @JsonProperty("symbol") var symbol: String,

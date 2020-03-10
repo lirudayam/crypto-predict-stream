@@ -12,30 +12,31 @@ import java.util.*
 
 object StreamListenerRepository {
     private val logger: Logger = LoggerFactory.getLogger(StreamListenerRepository::class.java)
-    private val repository: MutableMap<CryptoCurrency, MutableList<CurrencyEntry>> = mutableMapOf();
+    private val repository: MutableMap<String, MutableList<CurrencyEntry>> = mutableMapOf();
+
+    fun addJumpStartEntry(entry: CurrencyEntry) {
+        checkOfMap(entry.symbol)
+        repository[entry.symbol]?.add(entry)
+    }
 
     fun addEntry(entry: CurrencyEntry) {
-        val currency = checkOfMap(entry.symbol)
-        if (currency !== CryptoCurrency.EMPTY) {
-            repository[currency]?.add(entry)
-            if (!ARIMAModel.compareData(currency.symbol, entry.low)) {
-                logger.error("ANOMALY detected")
-                logger.error(entry.date.toString())
-            }
-            ARIMAModel.forecastData(currency)
+        checkOfMap(entry.symbol)
+        repository[entry.symbol]?.add(entry)
+        logger.info("{} repo has {} entries", entry.symbol, repository[entry.symbol]?.size.toString())
+        if (!ARIMAModel.compareData(entry.symbol, entry.low, entry.date)) {
+            logger.error("ANOMALY detected for {} on {}", entry.symbol, entry.date.toString())
         }
+        ARIMAModel.forecastData(CryptoCurrency.getCurrency(entry.symbol)!!)
     }
 
     fun getList(currency: CryptoCurrency): MutableList<CurrencyEntry>? {
-        return repository[currency]
+        return repository[currency.symbol]
     }
 
-    private fun checkOfMap(symbol: String): CryptoCurrency {
-        val key = CryptoCurrency.getCurrency(symbol) ?: CryptoCurrency.EMPTY
-        if (!repository.containsKey(key)) {
-            repository[key] = mutableListOf()
+    private fun checkOfMap(symbol: String) {
+        if (!repository.containsKey(symbol)) {
+            repository[symbol] = mutableListOf()
         }
-        return key;
     }
 
 }

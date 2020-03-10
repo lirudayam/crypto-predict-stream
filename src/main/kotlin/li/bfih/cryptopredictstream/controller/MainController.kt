@@ -22,6 +22,7 @@ class MainController {
     @GetMapping(value = ["/trigger"])
     fun triggerLoad() {
         Loader.startLoad()
+        kafkaTemplate.flush()
         loadComplete = true
     }
 
@@ -29,7 +30,6 @@ class MainController {
     @GetMapping(value = ["/send"])
     fun simulateNextDay() {
         if (loadComplete) {
-            logger.info("SEND msg")
             Loader.sendMessage(kafkaTemplate)
         }
 
