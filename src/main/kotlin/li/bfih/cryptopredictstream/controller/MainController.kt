@@ -22,8 +22,13 @@ class MainController {
     @GetMapping(value = ["/trigger"])
     fun triggerLoad() {
         Loader.startLoad()
-        kafkaTemplate.flush()
         loadComplete = true
+        Loader.sendMessage(kafkaTemplate)
+    }
+
+    @GetMapping(value = ["/nextDay"])
+    fun simulateADay() {
+        Loader.sendMessage(kafkaTemplate)
     }
 
     @Scheduled(fixedRate = 1000, initialDelay = 3000)

@@ -24,6 +24,7 @@ object Loader  {
         val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)
         list.forEach { entry -> kafkaTemplate.send(TOPIC, mapper.writeValueAsString(entry)) }
         currentDate = currentDate.plusDays(1)
+        logger.info("Current date is {}", currentDate.toString())
     }
 
     fun startLoad() {

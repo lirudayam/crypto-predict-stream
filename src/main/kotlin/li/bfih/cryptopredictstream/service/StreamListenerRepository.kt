@@ -22,9 +22,11 @@ object StreamListenerRepository {
     fun addEntry(entry: CurrencyEntry) {
         checkOfMap(entry.symbol)
         repository[entry.symbol]?.add(entry)
-        logger.info("{} repo has {} entries", entry.symbol, repository[entry.symbol]?.size.toString())
         if (!ARIMAModel.compareData(entry.symbol, entry.low, entry.date)) {
             logger.error("ANOMALY detected for {} on {}", entry.symbol, entry.date.toString())
+        }
+        else {
+            logger.info("everything normal for {} on {}", entry.symbol, entry.date.toString())
         }
         ARIMAModel.forecastData(CryptoCurrency.getCurrency(entry.symbol)!!)
     }
