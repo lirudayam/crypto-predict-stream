@@ -21,7 +21,6 @@ class StreamListenerService {
     fun consume(entry: String?) {
         if (entry != null) {
             val currencyEntry = mapper.readValue(entry, CurrencyEntry::class.java)
-            logger.info(String.format("New values for cryptocurrency %s received", currencyEntry.symbol))
             StreamListenerRepository.addEntry(currencyEntry)
         }
     }

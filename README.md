@@ -1,5 +1,14 @@
-# crypto-predict-stream
- Cryptocurrency prediction stream with Kafka
+# Cryptocurrency prediction stream with Kafka
+
+This Spring Boot Kotlin project takes the stored and old data of cryptocurrency prices and simulates a stream. Every second is one day and 
+anomaly detection triggers when an incoming data point is not in an 80% confidence prediction interval. For starting the initial load you'd need to call:
+
+```
+http://localhost:8080/kafka/trigger
+```
+
+This loads all the data and formats the right. It will execute also a 50 day from minimum jump start in order to have a better trained model. 
+After this it starts the every second cron job to push data into the stream. The ARIMA parameters have been used out of "Bitcoin Price Prediction: An ARIMA Approach".
 
 ## Prerequisites for running under Mac
 
@@ -27,3 +36,9 @@ bin/zookeeper-server-start.sh config/zookeeper.properties
 ## Running the project locally
 
 This Maven project can run easily using mvn spring-boot:run. However, it could be that you need to run a clean install, to empty build caches.
+
+To clean the Kafka, run following:
+
+```bash
+bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic users
+```

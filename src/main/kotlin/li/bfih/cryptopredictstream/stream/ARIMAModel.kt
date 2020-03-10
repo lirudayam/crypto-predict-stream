@@ -19,7 +19,7 @@ object ARIMAModel {
     private val logger: Logger = LoggerFactory.getLogger(ARIMAModel::class.java)
     private val forecastRepository: MutableMap<String, Forecast> = mutableMapOf();
 
-    @Async
+    //@Async
     fun forecastData(currency: CryptoCurrency) {
         val entryList = StreamListenerRepository.getList(currency)
         val list = arrayListOf<Double>()
