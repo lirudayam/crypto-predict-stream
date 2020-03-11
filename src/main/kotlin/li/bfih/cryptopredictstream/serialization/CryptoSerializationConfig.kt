@@ -5,8 +5,9 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import java.text.SimpleDateFormat
 import java.util.*
 
-object SerializationConfig {
+object CryptoSerializationConfig {
     private val mapper = ObjectMapper().registerModule(KotlinModule())
+    const val TOPIC = "users"
 
     fun getMapper(): ObjectMapper {
         val df = SimpleDateFormat("yyyy-MM-dd")

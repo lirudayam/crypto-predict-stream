@@ -1,5 +1,6 @@
 package li.bfih.cryptopredictstream.currency
 
+import li.bfih.cryptopredictstream.model.CurrencyEntry
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter

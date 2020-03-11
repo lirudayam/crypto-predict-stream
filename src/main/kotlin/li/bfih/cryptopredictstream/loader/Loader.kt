@@ -1,15 +1,10 @@
 package li.bfih.cryptopredictstream.loader
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.KotlinModule
 import li.bfih.cryptopredictstream.currency.CryptoCurrencyRepository
-import li.bfih.cryptopredictstream.currency.CurrencyEntry
-import li.bfih.cryptopredictstream.serialization.SerializationConfig
-import li.bfih.cryptopredictstream.service.StreamListenerRepository
+import li.bfih.cryptopredictstream.serialization.CryptoSerializationConfig
 import org.apache.kafka.clients.producer.Producer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.core.KafkaTemplate
 import java.io.File
 import java.time.LocalDate
@@ -17,13 +12,14 @@ import java.time.LocalDate
 object Loader  {
     private var currentDate : LocalDate = LocalDate.now()
     private val logger: Logger = LoggerFactory.getLogger(Producer::class.java)
-    private const val TOPIC = "users"
-    private val mapper = SerializationConfig.getMapper()
+
+    private val mapper = CryptoSerializationConfig.getMapper()
 
     fun sendMessage(kafkaTemplate: KafkaTemplate<String, String?>) {
         val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)
-        list.forEach { entry -> kafkaTemplate.send(TOPIC, mapper.writeValueAsString(entry)) }
+        list.forEach { entry -> kafkaTemplate.send(CryptoSerializationConfig.TOPIC, mapper.writeValueAsString(entry)) }
         currentDate = currentDate.plusDays(1)
+        logger.info("Add to stream")
     }
 
     fun startLoad() {
@@ -31,18 +27,18 @@ object Loader  {
         currentDate = CryptoCurrencyRepository.minDate
         logger.info("Loading completed")
 
-        makeJumpStart(50)
-        logger.info("Jump start completed")
+        //makeJumpStart(50)
+        //logger.info("Jump start completed")
     }
 
-    private fun makeJumpStart(days: Int) {
+    /*private fun makeJumpStart(days: Int) {
         for (i in 1..days) {
             val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)
             list.forEach { entry -> StreamListenerRepository.addJumpStartEntry(entry) }
             currentDate = currentDate.plusDays(1)
             print(currentDate)
         }
-    }
+    }*/
 
     private fun addDataToRepos() {
         val classloader = Thread.currentThread().contextClassLoader

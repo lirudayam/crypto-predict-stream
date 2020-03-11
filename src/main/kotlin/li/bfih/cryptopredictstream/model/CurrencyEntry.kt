@@ -1,4 +1,4 @@
-package li.bfih.cryptopredictstream.currency
+package li.bfih.cryptopredictstream.model
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
