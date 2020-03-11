@@ -5,6 +5,8 @@ import org.apache.flink.api.common.functions.MapFunction
 
 class CurrencyOutputer : MapFunction<CurrencyEntry?, String?> {
     override fun map(p0: CurrencyEntry?): String? {
+        print(p0?.symbol)
+        print("G")
         return p0?.symbol
     }
 

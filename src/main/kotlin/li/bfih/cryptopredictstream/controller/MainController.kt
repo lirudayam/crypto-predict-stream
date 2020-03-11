@@ -29,8 +29,6 @@ class MainController {
         logger.info("Load is completed -> Stream can be started")
         loadComplete = true
 
-        logger.info("Add entry into stream")
-        Loader.sendMessage(kafkaTemplate)
         StreamFlinkKafkaConsumer.startFlinkListening()
     }
 
@@ -39,7 +37,7 @@ class MainController {
         Loader.sendMessage(kafkaTemplate)
     }
 
-    @Scheduled(fixedRate = 2000, initialDelay = 3000)
+    @Scheduled(fixedRate = 1000, initialDelay = 3000)
     @GetMapping(value = ["/send"])
     fun simulateNextDay() {
         if (loadComplete) {

@@ -26,19 +26,7 @@ object Loader  {
         addDataToRepos()
         currentDate = CryptoCurrencyRepository.minDate
         logger.info("Loading completed")
-
-        //makeJumpStart(50)
-        //logger.info("Jump start completed")
     }
-
-    /*private fun makeJumpStart(days: Int) {
-        for (i in 1..days) {
-            val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)
-            list.forEach { entry -> StreamListenerRepository.addJumpStartEntry(entry) }
-            currentDate = currentDate.plusDays(1)
-            print(currentDate)
-        }
-    }*/
 
     private fun addDataToRepos() {
         val classloader = Thread.currentThread().contextClassLoader
