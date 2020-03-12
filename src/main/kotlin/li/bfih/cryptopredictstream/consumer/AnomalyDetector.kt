@@ -1,12 +1,9 @@
 package li.bfih.cryptopredictstream.consumer
 
 import li.bfih.cryptopredictstream.model.CurrencyEntry
-import li.bfih.cryptopredictstream.websocket.handler.WebInterfaceMessageHandlerFactory
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow
 import org.apache.flink.util.Collector
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.web.client.RestTemplate
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -24,8 +21,6 @@ class AnomalyDetector : ProcessWindowFunction<CurrencyEntry?, String, String, Ti
         val abnormalFactorSigma = 3
 
         val size = input?.count()
-        val logger: Logger = LoggerFactory.getLogger(AnomalyDetector::class.java)
-        logger.info(WebInterfaceMessageHandlerFactory.instance.toString())
 
         if (size != 0 && size != null && out != null && currentEntry != null) {
             for (r in input) {

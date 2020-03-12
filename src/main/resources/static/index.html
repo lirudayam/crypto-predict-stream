@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
+      <title>LI - Cryptocurrency Stream Live Analysis by Kafka and Flink</title>
+      <link href="/css/main.css" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Raleway:500,600,700,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+
+    <div id="chat-page">
+        <div class="chat-container">
+            <button onclick="triggerStream()">Start simulation</button>
+            <div class="chat-header">
+                <h2>Cryptocurrency Stream Live Analysis</h2>
+                <h4 id="date"></h4>
+            </div>
+            <div class="containers">
+                <ul id="messageArea"></ul>
+                <ul id="anomalyArea"></ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
