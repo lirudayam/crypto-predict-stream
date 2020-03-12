@@ -31,6 +31,7 @@ Download Apache Kafka latest distribution (https://www.apache.org/dyn/closer.cgi
 
 ```bash
 bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
 ```
 
 ## Running the project locally
