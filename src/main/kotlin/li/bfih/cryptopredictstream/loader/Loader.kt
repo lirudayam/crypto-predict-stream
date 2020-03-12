@@ -2,7 +2,7 @@ package li.bfih.cryptopredictstream.loader
 
 import li.bfih.cryptopredictstream.currency.CryptoCurrencyRepository
 import li.bfih.cryptopredictstream.serialization.CryptoSerializationConfig
-import org.apache.kafka.clients.producer.Producer
+import li.bfih.cryptopredictstream.websocket.handler.WebInterfaceMessageHandlerFactory
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.core.KafkaTemplate
@@ -11,15 +11,16 @@ import java.time.LocalDate
 
 object Loader  {
     private var currentDate : LocalDate = LocalDate.now()
-    private val logger: Logger = LoggerFactory.getLogger(Producer::class.java)
+    private val logger: Logger = LoggerFactory.getLogger(Loader::class.java)
 
     private val mapper = CryptoSerializationConfig.getMapper()
 
     fun sendMessage(kafkaTemplate: KafkaTemplate<String, String?>) {
         val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)
         list.forEach { entry -> kafkaTemplate.send(CryptoSerializationConfig.TOPIC, mapper.writeValueAsString(entry)) }
+        //logger.info("push ${list.size}")
         currentDate = currentDate.plusDays(1)
-        logger.info("Add to stream")
+        WebInterfaceMessageHandlerFactory.getMainInstance()?.sendSimulatedDate(currentDate)
     }
 
     fun startLoad() {

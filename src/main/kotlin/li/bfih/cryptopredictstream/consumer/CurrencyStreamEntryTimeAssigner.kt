@@ -6,6 +6,6 @@ import org.apache.flink.streaming.api.windowing.time.Time
 
 class CurrencyStreamEntryTimeAssigner: BoundedOutOfOrdernessTimestampExtractor<CurrencyEntry>(Time.seconds(5)) {
 
-    override fun extractTimestamp(entry: CurrencyEntry) = entry.date.time
+    override fun extractTimestamp(entry: CurrencyEntry) = entry.dateAdded.time
 
 }
