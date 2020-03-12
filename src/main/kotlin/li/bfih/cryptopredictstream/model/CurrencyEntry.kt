@@ -1,6 +1,7 @@
 package li.bfih.cryptopredictstream.model
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 import java.util.*
@@ -17,8 +18,8 @@ class CurrencyEntry(
         @JsonProperty("market") var market: Float = 0f,
         @JsonProperty("closeRatio") var closeRatio: Float = 0f,
         @JsonProperty("spread") var spread: Float = 0f,
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy") var dateAdded: Date = Date()
-) : Serializable {
+        @JsonIgnore var timeStamp: Long = 0L
+        ) : Serializable {
     companion object {
         private const val serialVersionUID = 20180617104400L
     }

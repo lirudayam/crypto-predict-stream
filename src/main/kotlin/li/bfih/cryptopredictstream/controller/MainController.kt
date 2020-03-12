@@ -36,7 +36,7 @@ class MainController {
         logger.info("Load is completed -> Stream can be started")
         loadComplete = true
 
-        StreamFlinkKafkaConsumer.startFlinkListening(webInterfaceMessageHandler)
+        StreamFlinkKafkaConsumer.startFlinkListening()
     }
 
     @GetMapping(value = ["/manualNextDay"])

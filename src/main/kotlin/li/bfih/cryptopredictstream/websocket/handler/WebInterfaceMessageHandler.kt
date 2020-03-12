@@ -35,6 +35,15 @@ class WebInterfaceMessageHandler : ApplicationListener<SessionDisconnectEvent> {
         }
     }
 
+    fun sendAnomalyEntry(anomaly: String) {
+        try {
+            simpMessagingTemplate.convertAndSend("/topic/anomaly", anomaly)
+        }
+        catch (e: MessagingException) {
+            print(e.failedMessage)
+        }
+    }
+
     override fun onApplicationEvent(p0: SessionDisconnectEvent) {
         // do something
     }

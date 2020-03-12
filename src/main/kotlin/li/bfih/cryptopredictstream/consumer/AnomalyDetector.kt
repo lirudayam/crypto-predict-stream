@@ -1,37 +1,33 @@
 package li.bfih.cryptopredictstream.consumer
 
 import li.bfih.cryptopredictstream.model.CurrencyEntry
-import org.apache.flink.streaming.api.functions.windowing.WindowFunction
+import li.bfih.cryptopredictstream.websocket.handler.WebInterfaceMessageHandlerFactory
+import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow
 import org.apache.flink.util.Collector
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import org.springframework.web.client.RestTemplate
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class AnomalyDetector : WindowFunction<CurrencyEntry?, String, String, TimeWindow> {
+class AnomalyDetector : ProcessWindowFunction<CurrencyEntry?, String, String, TimeWindow>() {
 
-    /**
-     * apply() is invoked once for each window.
-     *
-     * @param sensorId the key (sensorId) of the window
-     * @param window meta data for the window
-     * @param input an iterable over the collected sensor readings that were assigned to the window
-     * @param out a collector to emit results from the function
-     */
-    override fun apply(
-            currencyEntryId: String,
-            window: TimeWindow,
-            input: MutableIterable<CurrencyEntry?>,
-            out: Collector<String>
-    ) {
+    private val uri = "http://localhost:8080/internal/anomaly"
+
+    override fun process(currencyEntryId: String?, context: Context?, input: MutableIterable<CurrencyEntry?>?, out: Collector<String>?) {
         var cnt = 0
         var sumSpread = 0.0
         var sumVolume = 0.0
-        var lastEntry : CurrencyEntry? = input.first()
-        val currentEntry : CurrencyEntry? = input.last()
-        val abnormalFactorSigma = 2
+        var lastEntry : CurrencyEntry? = input?.first()
+        val currentEntry : CurrencyEntry? = input?.last()
+        val abnormalFactorSigma = 3
 
-        val size = input.count()
-        if (size != 0 && currentEntry != null) {
+        val size = input?.count()
+        val logger: Logger = LoggerFactory.getLogger(AnomalyDetector::class.java)
+        logger.info(WebInterfaceMessageHandlerFactory.instance.toString())
+
+        if (size != 0 && size != null && out != null && currentEntry != null) {
             for (r in input) {
                 if (cnt != size - 1) {
                     sumSpread += r?.spread ?: 0.0f
@@ -57,25 +53,33 @@ class AnomalyDetector : WindowFunction<CurrencyEntry?, String, String, TimeWindo
             val derivationSpread = sqrt(sumVarianceSpread / lnt)
             val derivationVolume = sqrt(sumVarianceVolume / lnt)
 
+            val anomalyCollector = mutableListOf<String>()
+
             if (currentEntry.volume > avgVolume + abnormalFactorSigma * derivationVolume) {
-                out.collect("abnormal high transaction volume of ${currentEntry.symbol} at ${currentEntry.date}")
+                anomalyCollector.add("abnormal high transaction volume of ${currentEntry.symbol} at ${currentEntry.date}")
             }
             if (currentEntry.volume < avgVolume - abnormalFactorSigma * derivationVolume) {
-                out.collect("abnormal low transaction volume of ${currentEntry.symbol} at ${currentEntry.date}")
+                anomalyCollector.add("abnormal low transaction volume of ${currentEntry.symbol} at ${currentEntry.date}")
             }
             if (currentEntry.spread > avgSpread + abnormalFactorSigma * derivationSpread) {
-                out.collect("abnormal high spread of ${currentEntry.symbol} at ${currentEntry.date}")
+                anomalyCollector.add("abnormal high spread of ${currentEntry.symbol} at ${currentEntry.date}")
             }
             if (currentEntry.spread < avgSpread - abnormalFactorSigma * derivationSpread) {
-                out.collect("abnormal low spread of ${currentEntry.symbol} at ${currentEntry.date}")
+                anomalyCollector.add("abnormal low spread of ${currentEntry.symbol} at ${currentEntry.date}")
             }
 
             val lastClose = lastEntry?.close ?: currentEntry.close
-            if ((currentEntry.close / lastClose) > 1.1) {
-                out.collect("more than 10% up day-over-day of ${currentEntry.symbol} at ${currentEntry.date}")
+            val delta = 15 // percentage points
+            if ((currentEntry.close / lastClose) > 1 + delta / 100) {
+                anomalyCollector.add("more than ${delta}% up day-over-day of ${currentEntry.symbol} at ${currentEntry.date}")
             }
-            if ((currentEntry.close / lastClose) < 0.9) {
-                out.collect("more than 10% down day-over-day of ${currentEntry.symbol} at ${currentEntry.date}")
+            if ((currentEntry.close / lastClose) < 1 - delta / 100) {
+                anomalyCollector.add("more than ${delta}% down day-over-day of ${currentEntry.symbol} at ${currentEntry.date}")
+            }
+
+            val restTemplate = RestTemplate()
+            anomalyCollector.forEach {
+                restTemplate.postForObject(uri, it, String::class.java)
             }
         }
     }
