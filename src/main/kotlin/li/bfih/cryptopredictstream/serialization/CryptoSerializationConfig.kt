@@ -1,5 +1,6 @@
 package li.bfih.cryptopredictstream.serialization
 
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import java.text.SimpleDateFormat
@@ -13,7 +14,8 @@ object CryptoSerializationConfig {
         val df = SimpleDateFormat("yyyy-MM-dd")
         df.timeZone = TimeZone.getTimeZone("UTC")
         mapper.dateFormat = df
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-        return mapper;
+        return mapper
     }
 }

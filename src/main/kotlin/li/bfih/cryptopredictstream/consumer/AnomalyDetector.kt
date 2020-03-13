@@ -1,19 +1,18 @@
 package li.bfih.cryptopredictstream.consumer
 
 import li.bfih.cryptopredictstream.model.CurrencyEntry
+import li.bfih.cryptopredictstream.rules.RuleFactory
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow
 import org.apache.flink.util.Collector
-import org.springframework.web.client.RestTemplate
-import kotlin.math.pow
-import kotlin.math.sqrt
 
 class AnomalyDetector : ProcessWindowFunction<CurrencyEntry?, String, String, TimeWindow>() {
 
     private val uri = "http://localhost:8080/internal/anomaly"
 
     override fun process(currencyEntryId: String?, context: Context?, input: MutableIterable<CurrencyEntry?>?, out: Collector<String>?) {
-        var cnt = 0
+        RuleFactory.applyRulesOnDataSet(input)
+        /*var cnt = 0
         var sumSpread = 0.0
         var sumVolume = 0.0
         var lastEntry : CurrencyEntry? = input?.first()
@@ -66,16 +65,16 @@ class AnomalyDetector : ProcessWindowFunction<CurrencyEntry?, String, String, Ti
             val lastClose = lastEntry?.close ?: currentEntry.close
             val delta = 15 // percentage points
             if ((currentEntry.close / lastClose) > 1 + delta / 100) {
-                anomalyCollector.add("more than ${delta}% up day-over-day of ${currentEntry.symbol} at ${currentEntry.date}")
+                anomalyCollector.add("${currentEntry.symbol} raised more than ${delta}% (${currentEntry.date})")
             }
             if ((currentEntry.close / lastClose) < 1 - delta / 100) {
-                anomalyCollector.add("more than ${delta}% down day-over-day of ${currentEntry.symbol} at ${currentEntry.date}")
+                anomalyCollector.add("${currentEntry.symbol} dropped more than ${delta}% (${currentEntry.date})")
             }
 
             val restTemplate = RestTemplate()
             anomalyCollector.forEach {
                 restTemplate.postForObject(uri, it, String::class.java)
             }
-        }
+        }*/
     }
 }

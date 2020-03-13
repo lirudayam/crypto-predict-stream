@@ -29,10 +29,25 @@ body {
     width:100%;
     padding: 10px 0 10px 0;
     height: auto;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #EEE;
     font-weight: 600;
     font-size: 1rem;
+    transition: all 0.5s ease-in-out;
 }
+#anomalyArea {
+    width: 50%;
+}
+.anomaly_container:first-child {
+    color: #333;
+    font-weight:600;
+}
+.anomaly_container:not(:first-child) {
+    color: #999;
+    font-weight:500;
+    font-size: 0.9rem;
+    padding: 7px 0 7px 0;
+}
+
 
 @keyframes fadein {
     from { opacity: 0; color: #FFF; }

@@ -44,6 +44,16 @@ class MainController {
         Loader.sendMessage(kafkaTemplate)
     }
 
+    @GetMapping(value = ["/pauseSimulation"])
+    fun pause() {
+        loadComplete = false
+    }
+
+    @GetMapping(value = ["/resumeSimulation"])
+    fun resume() {
+        loadComplete = true
+    }
+
     @Scheduled(fixedRate = 1000, initialDelay = 3000)
     @GetMapping(value = ["/cronJob"])
     fun simulateNextDay() {

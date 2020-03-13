@@ -23,4 +23,16 @@ class CurrencyEntry(
     companion object {
         private const val serialVersionUID = 20180617104400L
     }
+
+    fun getFloatVolume() : Float {
+        return volume.toFloat()
+    }
+
+    fun getFloatSpread() : Float {
+        return spread
+    }
+
+    fun getFloatClose() : Float {
+        return close
+    }
 }

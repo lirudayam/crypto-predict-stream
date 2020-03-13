@@ -71,6 +71,17 @@ function triggerStream() {
     dateField.innerText = "awaiting simulation begin...";
 }
 
+function pauseSimulation() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "http://localhost:8080/stream/pauseSimulation", true);
+    xhttp.send();
+}
+function continueSimulation() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "http://localhost:8080/stream/resumeSimulation", true);
+    xhttp.send();
+}
+
 function connect() {
     var socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
@@ -86,8 +97,7 @@ function onConnected() {
 }
 
 function handleAnomaly(payload) {
-    anomalyArea.innerHTML = anomalyTemplate.replace(payload.body.slice(1, -1)) + anomalyArea.innerHTML;
-    anomalyArea.scrollTop = anomalyArea.scrollHeight;
+    anomalyArea.innerHTML = anomalyTemplate.replace("{message}", payload.body) + anomalyArea.innerHTML;
 }
 
 function handleDate(payload) {
