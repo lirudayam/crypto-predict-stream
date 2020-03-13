@@ -8,9 +8,6 @@ import org.springframework.stereotype.Component
 import org.springframework.web.socket.messaging.SessionConnectedEvent
 import org.springframework.web.socket.messaging.SessionDisconnectEvent
 
-/**
- * Created by rajeevkumarsingh on 25/07/17.
- */
 @Component
 class WebSocketEventListener {
     @Autowired
@@ -22,8 +19,7 @@ class WebSocketEventListener {
     }
 
     @EventListener
-    fun handleWebSocketDisconnectListener(event: SessionDisconnectEvent?) {
-    }
+    fun handleWebSocketDisconnectListener(event: SessionDisconnectEvent?) {}
 
     companion object {
         private val logger = LoggerFactory.getLogger(WebSocketEventListener::class.java)
