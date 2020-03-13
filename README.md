@@ -1,14 +1,28 @@
 # Cryptocurrency prediction stream with Kafka
 
-This Spring Boot Kotlin project takes the stored and old data of cryptocurrency prices and simulates a stream. Every second is one day and 
-anomaly detection triggers when an incoming data point is not in an 80% confidence prediction interval. For starting the initial load you'd need to call:
+This Spring Boot Kotlin project takes the stored and old data of cryptocurrency prices and simulates a stream.
+For starting the initial load you'd need to call (skip when using new version):
 
 ```
 http://localhost:8080/kafka/trigger
 ```
 
-This loads all the data and formats the right. It will execute also a 50 day from minimum jump start in order to have a better trained model. 
-After this it starts the every second cron job to push data into the stream. The ARIMA parameters have been used out of "Bitcoin Price Prediction: An ARIMA Approach".
+For visualisation purposes there is a web user interface. This works on an Apache Tomcat server and it consumes a web socket stream.
+Data is in the first step read entirely from the CSV file and grouped by crypto currency. 
+When this has been completed the Web UI is ready, you can trigger a simulation stream to start. This stream is pushing every second the prices of all available cryptocurrencies to the timestamp X.
+The cronjob simulates every second a day from history.
+
+You can anytime stop or continue the stream.
+The webUI runs at:
+```
+http://localhost:8080
+```
+
+The stream is been consumed via Apache Flink in combination with Apache Kafka. There are multiple algorithms applied during the stream processing, defined in the RoleFactory:
+* Rule 1: When the price drops or increases by >20%, an anomaly is detected
+* Rule 2: The last 10 days get compared and when the spread is outter 3-sigma from distribution, an anomaly is detected
+* Rule 3: Rule 2 with close date
+
 
 ## Prerequisites for running under Mac
 
@@ -43,3 +57,5 @@ To clean the Kafka, run following:
 ```bash
 bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic users
 ```
+
+The Kafka and Zookeeper distribution are attached in this GitHub repo. The prepare.sh file is NOT yet finished.
