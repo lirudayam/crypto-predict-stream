@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 object CryptoCurrencyRepository {
-    private val repository: MutableMap<CryptoCurrency, MutableList<CurrencyEntry>> = mutableMapOf();
+    private val repository: MutableMap<CryptoCurrency, MutableList<CurrencyEntry>> = mutableMapOf()
     private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
 
     var minDate: LocalDate = LocalDate.now()
@@ -17,9 +17,9 @@ object CryptoCurrencyRepository {
         val currency = checkOfMap(lineParts[1])
         if (currency !== CryptoCurrency.EMPTY) {
             val date = LocalDate.parse(lineParts[3], formatter)
-            val formatDate = java.util.Date.from(date.atStartOfDay()
+            val formatDate = Date.from(date.atStartOfDay()
                     .atZone(ZoneId.systemDefault())
-                    .toInstant());
+                    .toInstant())
             val entry = CurrencyEntry(lineParts[1], formatDate, Integer.parseInt(lineParts[4]),
                     lineParts[5].toFloat(), lineParts[6].toFloat(), lineParts[7].toFloat(), lineParts[8].toFloat(),
                     lineParts[9].toDouble().toLong(), lineParts[10].toFloat(), lineParts[11].toFloat(), lineParts[12].toFloat())
@@ -47,7 +47,7 @@ object CryptoCurrencyRepository {
         if (!repository.containsKey(key)) {
             repository[key] = mutableListOf()
         }
-        return key;
+        return key
     }
 
 }

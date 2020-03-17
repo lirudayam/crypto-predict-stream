@@ -1,5 +1,6 @@
 package li.bfih.cryptopredictstream.websocket.handler
 
+import li.bfih.cryptopredictstream.anomaly.AnomalyOutput
 import li.bfih.cryptopredictstream.model.CurrencyEntry
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationListener
@@ -35,9 +36,11 @@ class WebInterfaceMessageHandler : ApplicationListener<SessionDisconnectEvent> {
         }
     }
 
-    fun sendAnomalyEntry(anomaly: String) {
+    fun sendAnomalyEntry(anomaly: AnomalyOutput?) {
         try {
-            simpMessagingTemplate.convertAndSend("/topic/anomaly", anomaly)
+            if (anomaly != null) {
+                simpMessagingTemplate.convertAndSend("/topic/anomaly", anomaly)
+            }
         }
         catch (e: MessagingException) {
             print(e.failedMessage)

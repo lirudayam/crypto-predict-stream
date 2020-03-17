@@ -1,5 +1,6 @@
 package li.bfih.cryptopredictstream.consumer
 
+import li.bfih.cryptopredictstream.anomaly.AnomalyDetector
 import li.bfih.cryptopredictstream.model.CurrencyEntry
 import li.bfih.cryptopredictstream.model.CurrencyEntryDeserializer
 import li.bfih.cryptopredictstream.serialization.CryptoSerializationConfig
@@ -33,9 +34,9 @@ object StreamFlinkKafkaConsumer {
         val kafkaSource: FlinkKafkaConsumer<CurrencyEntry?> = FlinkKafkaConsumer(CryptoSerializationConfig.TOPIC, CurrencyEntryDeserializer(), properties)
         val rawStream = see.addSource(kafkaSource).map(CurrencyStreamAttachTimestamp()).assignTimestampsAndWatermarks(CurrencyStreamEntryTimeAssigner())
 
-        val averageStream = rawStream?.keyBy(KeySelector<CurrencyEntry?, String> {
+        rawStream?.keyBy(KeySelector<CurrencyEntry?, String> {
             it?.symbol!!
-        })?.window(TumblingEventTimeWindows.of(Time.seconds(8), Time.seconds(1)))?.process(AnomalyDetector())
+        })?.window(TumblingEventTimeWindows.of(Time.seconds(15), Time.seconds(1)))?.process(AnomalyDetector())
 
         // for web stream
         DataStreamUtils.collect(rawStream).iterator().forEach {

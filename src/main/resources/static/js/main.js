@@ -16,7 +16,7 @@ const itemTemplate = '<div id="{symbol}" class="currency_container">'+
                      '  <div class="movement down" id="{symbol}-movement"></div>'+
                      '  <div class="left_inner">'+
                      '      <span id="{symbol}-symbol" class="symbol">{symbol}</span>'+
-                     '      <span id="{symbol}-label" class="label">{symbol}</span>'+
+                     '      <span id="{symbol}-label" class="label">{label}</span>'+
                      '      <span id="{symbol}-price" class="price">{close}</span>'+
                      '  </div>'+
                      '</div>'+
@@ -48,7 +48,7 @@ const itemTemplate = '<div id="{symbol}" class="currency_container">'+
                      '</div>'+
                      '</div>';
 
-const anomalyTemplate = '<div class="anomaly_container">{message}</div>';
+const anomalyTemplate = '<div class="anomaly_container"><span><b>{currency}</b> <i>({date})</i></span><span style="text-align: right">abnormal {anomalyType} found<br /><small>{is}, expected {low} - {up}</small></span></div>';
 
 const fmtr = new Intl.NumberFormat('us-us', {
                  style: 'decimal',
@@ -97,7 +97,14 @@ function onConnected() {
 }
 
 function handleAnomaly(payload) {
-    anomalyArea.innerHTML = anomalyTemplate.replace("{message}", payload.body) + anomalyArea.innerHTML;
+    var anomaly = JSON.parse(payload.body);
+    anomalyArea.innerHTML = anomalyTemplate.replace("{currency}", anomaly.currency)
+                                             .replace("{date}", anomaly.date)
+                                             .replace("{anomalyType}", anomaly.anomalyType)
+                                             .replace("{is}", anomaly.isValue)
+                                             .replace("{low}", anomaly.low)
+                                             .replace("{up}", anomaly.up)
+                                             + anomalyArea.innerHTML;
 }
 
 function handleDate(payload) {
@@ -109,7 +116,7 @@ function handleCurrencyInfo(payload) {
 
     if (itemSymbolsInUse.includes(currency.symbol)) {
         document.querySelector('#'+currency.symbol+'-symbol').innerText     = currency.symbol;
-        document.querySelector('#'+currency.symbol+'-label').innerText      = currency.symbol;
+        document.querySelector('#'+currency.symbol+'-label').innerText      = currency.symbolName;
         document.querySelector('#'+currency.symbol+'-price').innerText      = format(currency.close);
 
         document.querySelector('#'+currency.symbol+'-high').innerText       = currency.high.toFixed(2);

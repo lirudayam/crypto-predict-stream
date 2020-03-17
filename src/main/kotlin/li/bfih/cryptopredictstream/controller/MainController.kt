@@ -28,15 +28,17 @@ class MainController {
 
     @GetMapping(value = ["/trigger"])
     fun triggerLoad() {
-        WebInterfaceMessageHandlerFactory.instance = webInterfaceMessageHandler
+        if (!loadComplete) {
+            WebInterfaceMessageHandlerFactory.instance = webInterfaceMessageHandler
 
-        logger.info("Start loading")
-        Loader.startLoad()
+            logger.info("Start loading")
+            Loader.startLoad()
 
-        logger.info("Load is completed -> Stream can be started")
-        loadComplete = true
+            logger.info("Load is completed -> Stream can be started")
+            loadComplete = true
 
-        StreamFlinkKafkaConsumer.startFlinkListening()
+            StreamFlinkKafkaConsumer.startFlinkListening()
+        }
     }
 
     @GetMapping(value = ["/manualNextDay"])

@@ -3,6 +3,7 @@ package li.bfih.cryptopredictstream.model
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
+import li.bfih.cryptopredictstream.currency.CryptoCurrency
 import java.io.Serializable
 import java.util.*
 
@@ -15,8 +16,8 @@ class CurrencyEntry(
         @JsonProperty("low") var low: Float = 0f,
         @JsonProperty("close") var close: Float = 0f,
         @JsonProperty("volume") var volume: Long = 0L,
-        @JsonProperty("market") var market: Float = 0f,
-        @JsonProperty("closeRatio") var closeRatio: Float = 0f,
+        @JsonIgnore var market: Float = 0f,
+        @JsonIgnore var closeRatio: Float = 0f,
         @JsonProperty("spread") var spread: Float = 0f,
         @JsonIgnore var timeStamp: Long = 0L
         ) : Serializable {
@@ -32,7 +33,13 @@ class CurrencyEntry(
         return spread
     }
 
-    fun getFloatClose() : Float {
-        return close
+    fun getSymbolName() : String? {
+        return CryptoCurrency.getCurrency(symbol)?.currencyName
     }
+
+    fun getIntraDayMovement(): Float {
+        return high / low
+    }
+
+
 }
