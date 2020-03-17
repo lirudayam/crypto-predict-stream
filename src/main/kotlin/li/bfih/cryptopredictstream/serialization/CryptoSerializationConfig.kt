@@ -8,7 +8,7 @@ import java.util.*
 
 object CryptoSerializationConfig {
     private val mapper = ObjectMapper().registerModule(KotlinModule())
-    const val TOPIC = "users"
+    const val TOPIC = "cryptocurrency"
 
     fun getMapper(): ObjectMapper {
         val df = SimpleDateFormat("yyyy-MM-dd")

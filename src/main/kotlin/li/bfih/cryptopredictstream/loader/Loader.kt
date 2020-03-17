@@ -18,7 +18,6 @@ object Loader  {
     fun sendMessage(kafkaTemplate: KafkaTemplate<String, String?>) {
         val list = CryptoCurrencyRepository.getEntriesForDate(currentDate)
         list.forEach { entry -> kafkaTemplate.send(CryptoSerializationConfig.TOPIC, mapper.writeValueAsString(entry)) }
-        //logger.info("push ${list.size}")
         currentDate = currentDate.plusDays(1)
         WebInterfaceMessageHandlerFactory.getMainInstance()?.sendSimulatedDate(currentDate)
     }
