@@ -33,7 +33,7 @@ class RuleExecutor(private val dataSet: MutableIterable<CurrencyEntry?>?, privat
             min = max(avg - confidenceIntervalFigure * derivation, 0.0f)
             max = avg + confidenceIntervalFigure * derivation
 
-            return (compare > min) || (compare < max)
+            return (compare < min) || (compare > max)
         }
         return false
     }

@@ -9,7 +9,7 @@ import org.apache.flink.api.java.functions.KeySelector
 import org.apache.flink.streaming.api.TimeCharacteristic
 import org.apache.flink.streaming.api.datastream.DataStreamUtils
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment
-import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows
+import org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows
 import org.apache.flink.streaming.api.windowing.time.Time
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
 import org.slf4j.Logger
@@ -36,7 +36,7 @@ object StreamFlinkKafkaConsumer {
 
         rawStream?.keyBy(KeySelector<CurrencyEntry?, String> {
             it?.symbol!!
-        })?.window(TumblingEventTimeWindows.of(Time.seconds(15), Time.seconds(1)))?.process(AnomalyDetector())
+        })?.window(SlidingEventTimeWindows.of(Time.seconds(15), Time.seconds(1)))?.process(AnomalyDetector())
 
         // for web stream
         DataStreamUtils.collect(rawStream).iterator().forEach {
