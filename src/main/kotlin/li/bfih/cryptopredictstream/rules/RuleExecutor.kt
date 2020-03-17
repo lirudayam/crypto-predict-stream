@@ -3,6 +3,7 @@ package li.bfih.cryptopredictstream.rules
 import li.bfih.cryptopredictstream.anomaly.AnomalyOutput
 import li.bfih.cryptopredictstream.currency.CryptoCurrency
 import li.bfih.cryptopredictstream.model.CurrencyEntry
+import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.sqrt
 import kotlin.reflect.KFunction1
@@ -12,6 +13,8 @@ class RuleExecutor(private val dataSet: MutableIterable<CurrencyEntry?>?, privat
     private var avg: Float = 0.0f
     private var derivation = 0.0f
     private var compare = 0.0f
+    private var min = 0.0f
+    private var max = 0.0f
 
     private fun applyRule() : Boolean {
         if (dataSet != null && dataSet.count() > 1) {
@@ -27,13 +30,16 @@ class RuleExecutor(private val dataSet: MutableIterable<CurrencyEntry?>?, privat
                 (it?.let { it1 -> property(it1).minus(avg) })?.pow(2)  ?: 0.0f
             }.sum() / n)
 
-            return (compare > avg + confidenceIntervalFigure * derivation) || (compare < avg - confidenceIntervalFigure * derivation)
+            min = max(avg - confidenceIntervalFigure * derivation, 0.0f)
+            max = avg + confidenceIntervalFigure * derivation
+
+            return (compare > min) || (compare < max)
         }
         return false
     }
 
     fun executeRule(rule: Rule) : AnomalyOutput? {
-        if (applyRule()) return dataSet?.last()?.date?.let { it -> AnomalyOutput(dataSet.last()?.symbol?.let { CryptoCurrency.getCurrency(it) }!!, it, rule.anomalyType.string, compare, avg - rule.abnormalSigma * derivation, avg + rule.abnormalSigma * derivation) }
+        if (applyRule()) return dataSet?.last()?.date?.let { it -> AnomalyOutput(dataSet.last()?.symbol?.let { CryptoCurrency.getCurrency(it) }!!, it, rule.anomalyType.string, compare, min, max) }
         return null
     }
 

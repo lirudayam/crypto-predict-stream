@@ -198,31 +198,6 @@ button.accent {
     text-align: center;
 }
 
-.username-page-container {
-    background: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    border-radius: 2px;
-    width: 100%;
-    max-width: 500px;
-    display: inline-block;
-    margin-top: 42px;
-    vertical-align: middle;
-    position: relative;
-    padding: 35px 55px 35px;
-    min-height: 250px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    margin-top: -160px;
-}
-
-.username-page-container .username-submit {
-    margin-top: 10px;
-}
-
-
 #chat-page {
     position: relative;
     height: 100%;
@@ -244,7 +219,7 @@ button.accent {
     overflow: auto;
     overflow-y: scroll;
     padding: 0 20px 0px 20px;
-    height: 500px;
+    height: 600px;
 }
 
 #chat-page #messageForm {
