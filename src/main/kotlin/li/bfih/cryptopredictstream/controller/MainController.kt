@@ -2,6 +2,7 @@ package li.bfih.cryptopredictstream.controller
 
 import li.bfih.cryptopredictstream.consumer.StreamFlinkKafkaConsumer
 import li.bfih.cryptopredictstream.loader.Loader
+import li.bfih.cryptopredictstream.ml.CurrencyConverter
 import li.bfih.cryptopredictstream.websocket.handler.WebInterfaceMessageHandler
 import li.bfih.cryptopredictstream.websocket.handler.WebInterfaceMessageHandlerFactory
 import org.slf4j.Logger
@@ -30,6 +31,9 @@ class MainController {
     fun triggerLoad() {
         if (!loadComplete) {
             WebInterfaceMessageHandlerFactory.instance = webInterfaceMessageHandler
+
+            logger.info("Clear files")
+            CurrencyConverter.clearAllFiles()
 
             logger.info("Start loading")
             Loader.startLoad()

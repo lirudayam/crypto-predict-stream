@@ -1,6 +1,7 @@
 package li.bfih.cryptopredictstream.consumer
 
 import li.bfih.cryptopredictstream.anomaly.AnomalyDetector
+import li.bfih.cryptopredictstream.ml.PythonPusher
 import li.bfih.cryptopredictstream.model.CurrencyEntry
 import li.bfih.cryptopredictstream.model.CurrencyEntryDeserializer
 import li.bfih.cryptopredictstream.serialization.CryptoSerializationConfig
@@ -10,6 +11,7 @@ import org.apache.flink.streaming.api.TimeCharacteristic
 import org.apache.flink.streaming.api.datastream.DataStreamUtils
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment
 import org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows
 import org.apache.flink.streaming.api.windowing.time.Time
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
 import org.slf4j.Logger
@@ -33,6 +35,10 @@ object StreamFlinkKafkaConsumer {
 
         val kafkaSource: FlinkKafkaConsumer<CurrencyEntry?> = FlinkKafkaConsumer(CryptoSerializationConfig.TOPIC, CurrencyEntryDeserializer(), properties)
         val rawStream = see.addSource(kafkaSource).map(CurrencyStreamAttachTimestamp()).assignTimestampsAndWatermarks(CurrencyStreamEntryTimeAssigner())
+
+        rawStream?.keyBy(KeySelector<CurrencyEntry?, String> {
+            it?.symbol!!
+        })?.window(TumblingEventTimeWindows.of(Time.seconds(10)))?.process(PythonPusher())
 
         rawStream?.keyBy(KeySelector<CurrencyEntry?, String> {
             it?.symbol!!

@@ -13,8 +13,8 @@ enum class CryptoCurrency (
     LITECOIN("litecoin","LTC","Litecoin"),
     ETHEREUM("ethereum-classic","ETC","Ethereum Classic"),
     RIPPLE("ripple","XRP","Ripple"),
-    CARDANO("cardano","ADA","Cardano"),
-    STELLAR("stellar","XLM","Stellar"),
+    //CARDANO("cardano","ADA","Cardano"),
+    //STELLAR("stellar","XLM","Stellar"),
 
     EMPTY("", "", "");
 

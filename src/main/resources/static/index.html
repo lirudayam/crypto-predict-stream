@@ -4,19 +4,34 @@
       <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
       <title>LI - Cryptocurrency Stream Live Analysis by Kafka and Flink</title>
       <link href="/css/main.css" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css?family=Raleway:500,600,700,900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Raleway:500,600,700,900&display=swap" rel="stylesheet" />
+      <script src="https://d3js.org/d3.v5.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-zGo0JbZ5Sn6wU76MyVL0TrUZUq5GLXaFnMQCe/hSwVI=" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.8/jquery.csv.min.js"></script>
   </head>
   <body>
 
 
     <div id="chat-page">
         <div class="chat-container">
-            <div style="float:left"><button onclick="triggerStream()">Start simulation</button></div>
-            <div style="float:right"><button onclick="pauseSimulation()">Pause</button><button onclick="continueSimulation()">Continue</button></div><br><br>
-
             <div class="chat-header">
-                <h2>Cryptocurrency Stream Live Analysis (3&sigma; abnormal)</h2>
-                <h4 id="date"></h4>
+                <div>
+                    <button onclick="triggerStream()">Start simulation</button>
+                </div>
+                <div>
+                    <h3>Cryptocurrency Stream Live Analysis (3&sigma; abnormal)</h3>
+                    <h5 id="date"></h5>
+                </div>
+                <div style="text-align: right;font-size:11px;">
+                    <button onclick="pauseSimulation()">Pause</button><button onclick="continueSimulation()">Continue</button><br /><br />
+                    <div class="switch_container">
+                        Display entire history
+                        <label class="switch">
+                            <input id="historyOption" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
             </div>
             <div class="containers">
                 <ul id="messageArea"></ul>

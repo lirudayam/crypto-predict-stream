@@ -11,6 +11,8 @@ var anomalyArea = document.querySelector('#anomalyArea');
 var stompClient = null;
 
 var itemSymbolsInUse = [];
+var actualData = {};
+var historicPrediction = {};
 const itemTemplate = '<div id="{symbol}" class="currency_container">'+
                      '<div class="left">'+
                      '  <div class="movement down" id="{symbol}-movement"></div>'+
@@ -46,6 +48,9 @@ const itemTemplate = '<div id="{symbol}" class="currency_container">'+
                      '		<span class="category_number" id="{symbol}-volume">{volume}</span>'+
                      '	</div>'+
                      '</div>'+
+                     '<div class="graph">'+
+                     '  <div id="{symbol}-graph"></div>'+
+                     '</div>'+
                      '</div>';
 
 const anomalyTemplate = '<div class="anomaly_container"><span><b>{currency}</b> <i>({date})</i></span><span style="text-align: right">abnormal {anomalyType} found<br /><small>{is}, expected {low} - {up}</small></span></div>';
@@ -56,6 +61,15 @@ const fmtr = new Intl.NumberFormat('us-us', {
                  minimumFractionDigits: 2,
                  maximumFractionDigits: 4
                });
+
+const baseUrLForPrognosis = "http://localhost:8080/ml/prognosis/"
+
+var margin = {top: 10, right: 10, bottom: 20, left: 30},
+    width = 450 - margin.right,
+    height = 200 - margin.bottom;
+
+var dateTimeStamp = null;
+
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -69,6 +83,100 @@ function triggerStream() {
     xhttp.open("GET", "http://localhost:8080/stream/trigger", true);
     xhttp.send();
     dateField.innerText = "awaiting simulation begin...";
+}
+
+function redraw(symbol) {
+    d3.csv(baseUrLForPrognosis + symbol).then(function(data) {
+        if (data !== null && data.length > 1) {
+            data.forEach(function(d) {
+                d.low = +d.low;
+                d.high = +d.high;
+                d.date = new Date(parseInt(d.date));
+              });
+
+            historicPrediction[symbol] = historicPrediction[symbol].concat(data)
+            if (document.getElementById('historyOption').checked) {
+                data = historicPrediction[symbol];
+            }
+
+            var svg = d3.select("#" + symbol + "-svg");
+
+
+            var xRangeMin = margin.left;
+            var xRangeMax = width;
+
+            var x = d3.scaleTime()
+                .domain(d3.extent(data, function(d) { return d.date; }))
+                .range([ xRangeMin, xRangeMax ]);
+
+            var yMin = d3.min(data, function(d) { return d.low * 0.95 });
+            var yMax = d3.max(data, function(d) { return d.high / 0.95 });
+
+            yMin = Math.min(yMin, d3.min(actualData[symbol], function(d) {
+                    if (x(d.date) >= xRangeMin && x(d.date) <= xRangeMax) {
+                        return d.y * 0.9
+                    }
+                    return 100000000;
+                }
+            ));
+
+            yMax = Math.max(yMax, d3.max(actualData[symbol], function(d) {
+                    if (x(d.date) >= xRangeMin && x(d.date) <= xRangeMax) {
+                        return d.y / 0.9
+                    }
+                    return 0;
+                }
+            ));
+
+            // Add Y axis
+            var y = d3.scaleLinear()
+              .domain([yMin, yMax])
+              .range([ height, margin.top ]);
+
+            svg.selectAll("*").remove();
+
+            svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .attr("class", "lightAxis")
+                .call(d3.axisBottom(x)
+                        //.ticks(d3.timeDay.every(3))
+                        .ticks(3)
+                        .tickFormat(d3.timeFormat('%d.%m'))
+                      );
+
+            svg.append("g")
+                .attr("transform", "translate("+margin.left+",0)")
+                .attr("class", "lightAxis")
+                .call(d3.axisLeft(y).ticks(3));
+
+            // Show prediction interval
+            svg.append("path")
+              .datum(data)
+              .attr("fill", "#cce5df")
+              .attr("stroke", "none")
+              .attr("d", d3.area()
+                .x(function(d) { return x(d.date) })
+                .y0(function(d) { return y(d.low) })
+                .y1(function(d) { return y(d.high) })
+                );
+
+            // Add the line
+            svg
+              .append("path")
+              .datum(actualData[symbol])
+              .attr("fill", "none")
+              .attr("stroke", "steelblue")
+              .attr("stroke-width", 1.5)
+              .attr("d", d3.line()
+                .x(function(d) { return x(d.date) })
+                .y(function(d) { return y(d.y) })
+                );
+        }
+
+
+
+    })
+
 }
 
 function pauseSimulation() {
@@ -109,6 +217,7 @@ function handleAnomaly(payload) {
 
 function handleDate(payload) {
     dateField.innerText = "Simulated date: " + moment(payload.body.slice(1, -1)).format('LLL');
+    dateTimeStamp = moment(payload.body.slice(1, -1));
 }
 
 function handleCurrencyInfo(payload) {
@@ -127,9 +236,19 @@ function handleCurrencyInfo(payload) {
         document.querySelector('#'+currency.symbol+'-spread').innerText     = currency.spread;
 
         document.querySelector('#'+currency.symbol+'-movement').className = "movement " + (currency.open >= currency.close ? "down" : "up");
+        if (!(currency.symbol in actualData)) {
+            actualData[currency.symbol] = [];
+            historicPrediction[currency.symbol] = [];
+        }
+        actualData[currency.symbol].push({
+            date: moment(currency.date, "DD-MM-YYYY").toDate(),
+            y: (parseFloat(currency.low) + parseFloat(currency.high)) / 2
+        });
+        redraw(currency.symbol);
     }
     else {
         let htmlCode = itemTemplate.replace(/\{symbol\}/g, currency.symbol)
+                                    .replace("{label}", currency.symbolName)
                                     .replace("{close}", currency.close.toFixed(2))
                                     .replace("{open}", currency.open.toFixed(2))
                                     .replace("{high}", currency.high.toFixed(2))
@@ -142,6 +261,16 @@ function handleCurrencyInfo(payload) {
         document.querySelector('#'+currency.symbol+'-movement').className = "movement " + (currency.open >= currency.close ? "down" : "up");
         itemSymbolsInUse.push(currency.symbol);
         messageArea.scrollTop = messageArea.scrollHeight;
+
+        d3.select("#"+currency.symbol+"-graph")
+          .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .attr("id", currency.symbol+"-svg")
+          .append("g")
+            .attr("transform",
+                  "translate(" + margin.left + "," + margin.top + ")");
+        document.querySelector("#" + currency.symbol+"-svg").innerHTML += "<text x='20' y='100' fill='black'>waiting for a prediction model...</text>";
     }
 }
 
