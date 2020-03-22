@@ -1,11 +1,6 @@
 # Cryptocurrency prediction stream with Kafka
 
 This Spring Boot Kotlin project takes the stored and old data of cryptocurrency prices and simulates a stream.
-For starting the initial load you'd need to call (skip when using new version):
-
-```
-http://localhost:8080/kafka/trigger
-```
 
 For visualisation purposes there is a web user interface. This works on an Apache Tomcat server, and it consumes a web socket stream.
 Data is in the first step read entirely from the CSV file and grouped by crypto currency. 
@@ -34,3 +29,14 @@ The stream is been consumed via Apache Flink in combination with Apache Kafka. T
 ```bash
 ./prepare.sh
 ```
+
+## Build docker image
+
+```bash
+mvn clean install spring-boot:repackage
+docker build -t crypto-predict-stream .
+docker run -p 8080:8080 crypto-predict-stream:latest
+
+```
+
+

@@ -124,5 +124,5 @@ for y in range(25):
             "volume": new_volume
         }, name=last_set[i:].index.values[0] + 86400000), ignore_index=False)
 
-if i is not -1:
+if i != -1:
     last_set[org_length:i].to_csv("data/predict-low-high-" + symbol + ".csv", sep=",", header=True, decimal='.')

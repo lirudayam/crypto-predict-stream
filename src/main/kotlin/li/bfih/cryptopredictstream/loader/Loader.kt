@@ -5,9 +5,16 @@ import li.bfih.cryptopredictstream.serialization.CryptoSerializationConfig
 import li.bfih.cryptopredictstream.websocket.handler.WebInterfaceMessageHandlerFactory
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.core.io.ClassPathResource
 import org.springframework.kafka.core.KafkaTemplate
-import java.io.File
+import org.springframework.util.FileCopyUtils
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStream
+import java.io.InputStreamReader
+import java.nio.charset.StandardCharsets
 import java.time.LocalDate
+import java.util.stream.Collectors
 
 object Loader  {
     private var currentDate : LocalDate = LocalDate.now()
@@ -29,13 +36,20 @@ object Loader  {
     }
 
     private fun addDataToRepos() {
-        val classloader = Thread.currentThread().contextClassLoader
-        var i = 0
-        File(classloader?.getResource("crypto-markets.csv")?.file ?: "").forEachLine {
-            if (i != 0) {
-                CryptoCurrencyRepository.addEntry(it)
+        val cpr = ClassPathResource("crypto-markets.csv")
+        try {
+            val resource: InputStream = cpr.inputStream
+            var i = 0
+            BufferedReader(InputStreamReader(resource)).use { reader ->
+                reader.lines().forEach{
+                    if (i != 0) {
+                        CryptoCurrencyRepository.addEntry(it)
+                    }
+                    i++
+                }
             }
-            i++
+        } catch (e: IOException) {
+            logger.error("Error reading file")
         }
     }
 }

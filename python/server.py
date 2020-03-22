@@ -26,7 +26,7 @@ class myServer(BaseHTTPRequestHandler):
 
         if self.path.startswith("/train/"):
             symbol = self.path.replace("/train/", "")
-            call(["python", "create_model.py", "-s " + symbol])
+            call(["python3", "create_model.py", "-s " + symbol])
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b'Done')
