@@ -18,19 +18,24 @@ The stream is been consumed via Apache Flink in combination with Apache Kafka. T
 * Rule 2: The last 10 days get compared and when the spread is outter 3-sigma from distribution, an anomaly is detected
 * Rule 3: Rule 2 with close date
 
+## Running the application from the existing Docker image
+```bash
+docker pull leosmashesdocker/crypto-predict-stream:latest
+docker run -p 8080:8080 leosmashesdocker/crypto-predict-stream:latest
+```
 
 ## Prerequisites for running under Mac
 
 * Have an up-to-date Java distribution with working JAVA_HOME env variables
 * Have Apache Maven installed otherwise install maven
 
-## Running the project locally
+### Running the project locally from scratch
 
 ```bash
 ./prepare.sh
 ```
 
-## Build docker image
+### Build docker image
 
 ```bash
 mvn clean install spring-boot:repackage
