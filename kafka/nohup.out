@@ -1,0 +1,244 @@
+[2020-03-17 12:51:06,888] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:06,996] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:07,102] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:07,305] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:07,821] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:08,646] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:09,682] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:10,721] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:11,950] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:13,186] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:14,320] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:15,455] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:16,688] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:17,618] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:18,753] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:19,687] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:20,818] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:21,635] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:22,872] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:23,795] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:24,935] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:26,069] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:27,211] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:28,339] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:29,167] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:30,101] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:31,233] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:32,367] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:33,298] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:34,225] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:35,052] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:36,085] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:37,228] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:38,368] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:39,502] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:40,431] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:41,668] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:42,802] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:43,836] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:44,764] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:45,692] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:46,612] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:47,852] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:48,880] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:49,907] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:50,936] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:51,871] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:53,007] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:53,942] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:54,768] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:55,803] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:56,727] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:57,665] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:58,801] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:51:59,724] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:00,854] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:02,085] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:02,911] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:03,946] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:05,085] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:06,008] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:07,140] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:08,170] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:09,407] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:10,637] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:11,561] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:12,694] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:13,719] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:14,845] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:15,768] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:16,799] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:17,926] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:18,954] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:19,874] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:21,011] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:22,155] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:23,183] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:24,309] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:25,239] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:26,159] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:27,179] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:28,004] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:29,035] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:30,069] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:31,306] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:32,229] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:33,152] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:34,285] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:35,319] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:36,339] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:37,469] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:38,504] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:39,534] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:40,671] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:41,801] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:42,927] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:43,955] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:45,190] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:46,221] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:47,039] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:48,072] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:49,303] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:50,435] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:51,463] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:52,389] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:53,619] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:54,742] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:55,671] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:56,806] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:57,839] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:52:59,067] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:53:00,101] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:53:01,131] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:53:02,372] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:53:03,305] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:53:04,443] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:53:05,570] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2020-03-17 12:53:06,496] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+Error while executing topic command : org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment.
+[2020-03-17 12:53:06,883] ERROR java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment.
+	at org.apache.kafka.common.internals.KafkaFutureImpl.wrapAndThrow(KafkaFutureImpl.java:45)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.access$000(KafkaFutureImpl.java:32)
+	at org.apache.kafka.common.internals.KafkaFutureImpl$SingleWaiter.await(KafkaFutureImpl.java:89)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:260)
+	at kafka.admin.TopicCommand$AdminClientTopicService.createTopic(TopicCommand.scala:225)
+	at kafka.admin.TopicCommand$TopicService$class.createTopic(TopicCommand.scala:194)
+	at kafka.admin.TopicCommand$AdminClientTopicService.createTopic(TopicCommand.scala:217)
+	at kafka.admin.TopicCommand$.main(TopicCommand.scala:61)
+	at kafka.admin.TopicCommand.main(TopicCommand.scala)
+Caused by: org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment.
+ (kafka.admin.TopicCommand$)
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics are not found, skipping them
+Topic: cryptocurrency
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics are not found, skipping them
+Topic: cryptocurrency
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics are not found, skipping them
+Topic: cryptocurrency
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Topic cryptocurrency is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics are not found, skipping them
+Topic: cryptocurrency
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Error while executing topic command : Topic 'cryptocurrency' does not exist as expected
+[2020-03-21 11:35:10,459] ERROR java.lang.IllegalArgumentException: Topic 'cryptocurrency' does not exist as expected
+	at kafka.admin.TopicCommand$.kafka$admin$TopicCommand$$ensureTopicExists(TopicCommand.scala:484)
+	at kafka.admin.TopicCommand$ZookeeperTopicService.deleteTopic(TopicCommand.scala:442)
+	at kafka.admin.TopicCommand$.main(TopicCommand.scala:69)
+	at kafka.admin.TopicCommand.main(TopicCommand.scala)
+ (kafka.admin.TopicCommand$)
+ERROR: java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.CoordinatorNotAvailableException: The coordinator is not available.
+java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.CoordinatorNotAvailableException: The coordinator is not available.
+	at org.apache.kafka.common.internals.KafkaFutureImpl.wrapAndThrow(KafkaFutureImpl.java:45)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.access$000(KafkaFutureImpl.java:32)
+	at org.apache.kafka.common.internals.KafkaFutureImpl$SingleWaiter.await(KafkaFutureImpl.java:89)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:260)
+	at kafka.tools.StreamsResetter.validateNoActiveConsumers(StreamsResetter.java:187)
+	at kafka.tools.StreamsResetter.run(StreamsResetter.java:152)
+	at kafka.tools.StreamsResetter.run(StreamsResetter.java:131)
+	at kafka.tools.StreamsResetter.main(StreamsResetter.java:684)
+Caused by: org.apache.kafka.common.errors.CoordinatorNotAvailableException: The coordinator is not available.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics are not found, skipping them
+Topic: cryptocurrency
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.
+Reset-offsets for input topics [cryptocurrency]
+Following input topics offsets will be reset to (for consumer group li.crypto-stream)
+Topic: cryptocurrency Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application li.crypto-stream
+Done.

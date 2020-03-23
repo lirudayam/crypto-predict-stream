@@ -47,3 +47,4 @@ target/generated-test-sources/
 target/maven-status/
 target/test-classes/META-INF/
 /python/venv/
+target/spring-websockets.jar.original
