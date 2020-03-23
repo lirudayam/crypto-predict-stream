@@ -85,6 +85,21 @@ function triggerStream() {
     dateField.innerText = "awaiting simulation begin...";
 }
 
+
+function removeDuplicatesBy(keyFn, array) {
+  var mySet = new Set();
+  return array.filter(function(x) {
+    var key = keyFn(x), isNew = !mySet.has(key);
+    if (isNew) mySet.add(key);
+    return isNew;
+  });
+}
+
+function removeHistoricOverwrittenPredictions(symbol, data) {
+    var reverse = historicPrediction[symbol].concat(data).sort(function(a, b){return b.date-a.date});
+    historicPrediction[symbol] = removeDuplicatesBy(x => x.date, reverse).reverse();
+}
+
 function redraw(symbol) {
     d3.csv(baseUrLForPrognosis + symbol).then(function(data) {
         if (data !== null && data.length > 1) {
@@ -94,7 +109,8 @@ function redraw(symbol) {
                 d.date = new Date(parseInt(d.date));
               });
 
-            historicPrediction[symbol] = historicPrediction[symbol].concat(data)
+            //historicPrediction[symbol] = historicPrediction[symbol].concat(data)
+            removeHistoricOverwrittenPredictions(symbol, data);
             if (document.getElementById('historyOption').checked) {
                 data = historicPrediction[symbol];
             }
@@ -249,7 +265,7 @@ function handleCurrencyInfo(payload) {
     else {
         let htmlCode = itemTemplate.replace(/\{symbol\}/g, currency.symbol)
                                     .replace("{label}", currency.symbolName)
-                                    .replace("{close}", currency.close.toFixed(2))
+                                    .replace(/\{close\}/g, currency.close.toFixed(2))
                                     .replace("{open}", currency.open.toFixed(2))
                                     .replace("{high}", currency.high.toFixed(2))
                                     .replace("{low}", currency.low.toFixed(2))

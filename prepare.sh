@@ -27,8 +27,9 @@ sleep 5
 
 # shellcheck disable=SC2164
 cd ../python
-python server.py
+nohup python server.py > nohup.out 2>&1 & disown
 cd ../
+exit
 
 # build and start application
 nohup mvn spring-boot:run &

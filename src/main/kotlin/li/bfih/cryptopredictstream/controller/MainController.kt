@@ -60,7 +60,7 @@ class MainController {
         loadComplete = true
     }
 
-    @Scheduled(fixedRate = 1000, initialDelay = 3000)
+    @Scheduled(fixedRate = 2000, initialDelay = 3000)
     @GetMapping(value = ["/cronJob"])
     fun simulateNextDay() {
         if (loadComplete) {
