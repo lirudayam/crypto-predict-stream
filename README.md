@@ -41,7 +41,7 @@ docker run -p 8080:8080 leosmashesdocker/crypto-predict-stream:latest
 mvn clean install spring-boot:repackage
 docker build -t crypto-predict-stream .
 docker tag crypto-predict-stream leosmashesdocker/crypto-predict-stream
-docker push
+docker push leosmashesdocker/crypto-predict-stream
 docker run -p 8080:8080 crypto-predict-stream:latest
 
 ```

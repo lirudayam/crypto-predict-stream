@@ -16,33 +16,47 @@ class RuleExecutor(private val dataSet: MutableIterable<CurrencyEntry?>?, privat
     private var min = 0.0f
     private var max = 0.0f
 
+    private fun calculateRatio(it: CurrencyEntry?, compare: CurrencyEntry?): Float {
+        val v1 = it?.let { it1 -> property(it1) } ?: 1.0f
+        val v2 = compare?.let { it1 -> property(it1) } ?: 0.0f
+        if (v2 == 0.0f) {
+            return 1.0f
+        }
+        return v1 / v2
+    }
+
     private fun applyRule() : Boolean {
-        if (dataSet != null && dataSet.count() > 1) {
+        if (dataSet != null && dataSet.count() > 2) {
             val lastEntry = dataSet.last()
             val kpiList = dataSet.filter { it?.date != lastEntry?.date }
             val n = kpiList.count()
 
-            compare = lastEntry?.let { property(it) / kpiList[n - 2]?.let { it1 -> property(it1) }!! } ?: 1.0f
-            avg = (kpiList.mapIndexed { index, currencyEntry ->
-                if (index > 0) {
-                    currencyEntry?.let { property(it) }?.div(kpiList[index - 1]?.let { property(it) }!!)
-                }
-                1.0
-            }.sum() / n).toFloat()
-            derivation = sqrt(kpiList.mapIndexed { index, currencyEntry ->
-                if (index > 0) {
-                    (currencyEntry?.let { property(it) }?.div(kpiList[index - 1]?.let { property(it) }!!)?.minus(avg))?.pow(2)
-                }
-                0.0
-            }.sum() / n).toFloat()
+            compare = calculateRatio(lastEntry, kpiList.last())
+            var lastElm : CurrencyEntry? = null
 
-            /*compare = lastEntry?.let { property(it) } ?: 0.0f
-            avg = kpiList.map {
-                    it?.let { it1 -> property(it1) } ?: 0.0f
-                }.sum() / n
+            avg = (kpiList.map {
+                var l = 1.0f
+                if (lastElm != null) {
+                    l = calculateRatio(it, lastElm)
+                }
+                lastElm = it
+                l
+            }.sum() / n)
+
+            lastElm = null
             derivation = sqrt(kpiList.map{
-                (it?.let { it1 -> property(it1).minus(avg) })?.pow(2)  ?: 0.0f
-            }.sum() / n)*/
+                var l = 0.0f
+                if (lastElm != null) {
+                    l = (calculateRatio(it, lastElm) - avg).pow(2)
+                }
+                lastElm = it
+                l
+            }.sum() / n)
+
+            // check if useful results
+            if (avg == 1.0f && derivation == 0.0f) {
+                return false
+            }
 
             min = max(avg - confidenceIntervalFigure * derivation, 0.0f)
             max = avg + confidenceIntervalFigure * derivation

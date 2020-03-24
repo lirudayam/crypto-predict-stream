@@ -15,8 +15,9 @@
     <div id="chat-page">
         <div class="chat-container">
             <div class="chat-header">
-                <div>
-                    <button onclick="triggerStream()">Start simulation</button>
+                <div style="text-align: left;font-size:11px;">
+                    <button onclick="triggerStream()">Start simulation</button><br />
+                    <button onclick="collapseAnomalies()" id="aBtn">See anomalies</button>
                 </div>
                 <div>
                     <h3>Cryptocurrency Stream Live Analysis (3&sigma; abnormal)</h3>
@@ -34,8 +35,10 @@
                 </div>
             </div>
             <div class="containers">
+                <ul id="anomalyAreaContainer">
+                    <div id="anomalyArea"></div>
+                </ul>
                 <ul id="messageArea"></ul>
-                <ul id="anomalyArea"></ul>
             </div>
 
         </div>

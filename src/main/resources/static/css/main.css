@@ -27,16 +27,23 @@ body {
     align-items: center;
   	justify-content: space-between;
     width:100%;
-    padding: 10px 0 10px 0;
+    padding: 7px 0 7px 0;
     height: auto;
     border-bottom: 1px solid #EEE;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.8rem;
     transition: all 0.5s ease-in-out;
 }
-#anomalyArea {
-    width: 50%;
-    display: none;
+#anomalyAreaContainer {
+    width: 100%;
+    height:0px;
+    max-height: 200px;
+    overflow: hidden;
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    -webkit-transition: height .5s;
+    transition: height .5s;
 }
 .anomaly_container:first-child {
     color: #333;
@@ -45,8 +52,8 @@ body {
 .anomaly_container:not(:first-child) {
     color: #999;
     font-weight:500;
-    font-size: 0.9rem;
-    padding: 7px 0 7px 0;
+    font-size: 0.7rem;
+    padding: 4px 0 4px 0;
 }
 
 

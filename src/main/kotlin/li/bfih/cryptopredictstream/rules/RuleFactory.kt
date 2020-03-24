@@ -8,10 +8,11 @@ import org.springframework.web.client.RestTemplate
 object RuleFactory {
 
     private const val uri = "http://localhost:8080/internal/anomaly"
+    private const val ABNORMAL_SIGMA = 3
     private val ruleList = arrayOf(
-            Rule(CurrencyEntry::getIntraDayMovement, AnomalyType.INTRADAY, 3),
-            Rule(CurrencyEntry::getFloatSpread, AnomalyType.SPREAD, 3),
-            Rule(CurrencyEntry::getFloatVolume, AnomalyType.VOLUME, 3)
+            Rule(CurrencyEntry::getIntraDayMovement, AnomalyType.INTRADAY, ABNORMAL_SIGMA),
+            Rule(CurrencyEntry::getFloatSpread, AnomalyType.SPREAD, ABNORMAL_SIGMA),
+            Rule(CurrencyEntry::getFloatVolume, AnomalyType.VOLUME, ABNORMAL_SIGMA)
     )
 
     fun applyRulesOnDataSet(dataSet: MutableIterable<CurrencyEntry?>?) {

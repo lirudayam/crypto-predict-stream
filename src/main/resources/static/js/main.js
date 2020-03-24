@@ -53,7 +53,7 @@ const itemTemplate = '<div id="{symbol}" class="currency_container">'+
                      '</div>'+
                      '</div>';
 
-const anomalyTemplate = '<div class="anomaly_container"><span><b>{currency}</b> <i>({date})</i></span><span style="text-align: right">abnormal {anomalyType} found<br /><small>{is}, expected {low} - {up}</small></span></div>';
+const anomalyTemplate = '<div class="anomaly_container"><span><b>{currency}</b> <i>({date})</i></span><span style="text-align: right">abnormal {anomalyType} found<br /><small>{is}x, expected {low}x - {up}x</small></span></div>';
 
 const fmtr = new Intl.NumberFormat('us-us', {
                  style: 'decimal',
@@ -69,6 +69,7 @@ var margin = {top: 10, right: 10, bottom: 20, left: 30},
     height = 200 - margin.bottom;
 
 var dateTimeStamp = null;
+var noOfAnomalies = 0;
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -221,6 +222,9 @@ function onConnected() {
 }
 
 function handleAnomaly(payload) {
+    noOfAnomalies++;
+    document.getElementById("aBtn").innerText = document.getElementById("aBtn").innerText !== 'Hide Anomalies' ? 'See anomalies ('+noOfAnomalies+')' : 'Hide Anomalies';
+
     var anomaly = JSON.parse(payload.body);
     anomalyArea.innerHTML = anomalyTemplate.replace("{currency}", anomaly.currency)
                                              .replace("{date}", anomaly.date)
@@ -288,6 +292,19 @@ function handleCurrencyInfo(payload) {
                   "translate(" + margin.left + "," + margin.top + ")");
         document.querySelector("#" + currency.symbol+"-svg").innerHTML += "<text x='20' y='100' fill='black'>waiting for a prediction model...</text>";
     }
+}
+
+function collapseAnomalies() {
+    var growDiv = document.getElementById('anomalyAreaContainer');
+    if (growDiv.clientHeight) {
+        growDiv.style.height = 0;
+        growDiv.style.overflow = "hidden";
+    } else {
+        var wrapper = document.querySelector('#anomalyArea');
+        growDiv.style.height = wrapper.clientHeight + "px";
+        growDiv.style.overflow = "auto";
+    }
+    document.getElementById("aBtn").innerText = document.getElementById("aBtn").innerText == 'Hide Anomalies' ? 'See anomalies ('+noOfAnomalies+')' : 'Hide Anomalies';
 }
 
 connect();
