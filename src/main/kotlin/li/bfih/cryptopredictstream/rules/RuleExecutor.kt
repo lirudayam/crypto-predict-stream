@@ -22,13 +22,27 @@ class RuleExecutor(private val dataSet: MutableIterable<CurrencyEntry?>?, privat
             val kpiList = dataSet.filter { it?.date != lastEntry?.date }
             val n = kpiList.count()
 
-            compare = lastEntry?.let { property(it) } ?: 0.0f
+            compare = lastEntry?.let { property(it) / kpiList[n - 2]?.let { it1 -> property(it1) }!! } ?: 1.0f
+            avg = (kpiList.mapIndexed { index, currencyEntry ->
+                if (index > 0) {
+                    currencyEntry?.let { property(it) }?.div(kpiList[index - 1]?.let { property(it) }!!)
+                }
+                1.0
+            }.sum() / n).toFloat()
+            derivation = sqrt(kpiList.mapIndexed { index, currencyEntry ->
+                if (index > 0) {
+                    (currencyEntry?.let { property(it) }?.div(kpiList[index - 1]?.let { property(it) }!!)?.minus(avg))?.pow(2)
+                }
+                0.0
+            }.sum() / n).toFloat()
+
+            /*compare = lastEntry?.let { property(it) } ?: 0.0f
             avg = kpiList.map {
                     it?.let { it1 -> property(it1) } ?: 0.0f
                 }.sum() / n
             derivation = sqrt(kpiList.map{
                 (it?.let { it1 -> property(it1).minus(avg) })?.pow(2)  ?: 0.0f
-            }.sum() / n)
+            }.sum() / n)*/
 
             min = max(avg - confidenceIntervalFigure * derivation, 0.0f)
             max = avg + confidenceIntervalFigure * derivation
