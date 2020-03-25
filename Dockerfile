@@ -6,7 +6,7 @@ RUN mkdir -p /python
 
 COPY ./kafka/ /kafka/
 COPY ./python/ /python/
-RUN rm /kafka/logs/*
+#RUN rm /kafka/logs/*
 
 # Install "software-properties-common" (for the "add-apt-repository")
 RUN apt-get update && apt-get install -y \
