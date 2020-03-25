@@ -20,11 +20,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout
+      uses: actions/checkout@v1
+        
     - name: Build and push Docker images
       uses: docker/build-push-action@v1.0.1
       with:
         repository: leosmashesdocker/crypto-predict-stream
         username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PWD }}
-        path: ./ 
+        password: ${{ secrets.DOCKER_PWD }
         tags: latest
