@@ -26,5 +26,5 @@ jobs:
         repository: leosmashesdocker/crypto-predict-stream
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PWD }}
-        path: ../../. 
+        path: ./ 
         tags: latest
