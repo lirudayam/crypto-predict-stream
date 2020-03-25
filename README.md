@@ -1,5 +1,7 @@
 # Cryptocurrency prediction stream with Kafka
 
+![Auto Docker Build/Push](https://github.com/lirudayam/crypto-predict-stream/workflows/Auto%20Docker%20Build/Push/badge.svg)
+
 This Spring Boot Kotlin project takes the stored and old data of cryptocurrency prices and simulates a stream.
 
 For visualisation purposes there is a web user interface. This works on an Apache Tomcat server, and it consumes a web socket stream.
