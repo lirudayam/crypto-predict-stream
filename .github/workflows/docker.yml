@@ -23,6 +23,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         
+      - name: Build with Maven
+        run: mvn clean install spring-boot:repackage
+        
       - name: Build and push Docker images
         uses: docker/build-push-action@v1.0.1
         with:
