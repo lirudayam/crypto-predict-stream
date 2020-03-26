@@ -16,9 +16,11 @@ http://localhost:8080
 ```
 
 The stream is been consumed via Apache Flink in combination with Apache Kafka. There are multiple algorithms applied during the stream processing, defined in the RoleFactory:
-* Rule 1: When the price drops or increases by >20%, an anomaly is detected
-* Rule 2: The last 10 days get compared and when the spread is outter 3-sigma from distribution, an anomaly is detected
-* Rule 3: Rule 2 with close date
+* Rule 1: The last 15 days get compared and when the relative change of the intraday movement is out of 3-sigma from distribution, an anomaly is detected
+* Rule 2: The last 15 days get compared and when the relative change of the spread is out of 3-sigma from distribution, an anomaly is detected
+* Rule 3: The last 15 days get compared and when the relative change of the volume is out of 3-sigma from distribution, an anomaly is detected
+
+The Python Gradient Boosting Module is been triggered every 10 days and makes a forecast for the next 20 days based on the batch of data which has been received via stream.
 
 ## Running the application from the existing Docker image
 ```bash
