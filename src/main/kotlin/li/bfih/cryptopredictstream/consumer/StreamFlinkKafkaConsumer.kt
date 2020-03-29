@@ -38,11 +38,11 @@ object StreamFlinkKafkaConsumer {
 
         rawStream?.keyBy(KeySelector<CurrencyEntry?, String> {
             it?.symbol!!
-        })?.window(TumblingEventTimeWindows.of(Time.seconds(10)))?.process(PythonPusher())
+        })?.window(TumblingEventTimeWindows.of(Time.seconds(12)))?.process(PythonPusher())
 
         rawStream?.keyBy(KeySelector<CurrencyEntry?, String> {
             it?.symbol!!
-        })?.window(SlidingEventTimeWindows.of(Time.seconds(15), Time.seconds(1)))?.process(AnomalyDetector())
+        })?.window(SlidingEventTimeWindows.of(Time.seconds(20), Time.seconds(2)))?.process(AnomalyDetector())
 
         // for web stream
         DataStreamUtils.collect(rawStream).iterator().forEach {
