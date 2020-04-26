@@ -345,3 +345,21 @@ java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.TimeoutE
 	at kafka.tools.StreamsResetter.run(StreamsResetter.java:131)
 	at kafka.tools.StreamsResetter.main(StreamsResetter.java:684)
 Caused by: org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment.
+Error while executing topic command : Topic 'cryptocurrency' does not exist as expected
+[2020-04-21 18:35:57,160] ERROR java.lang.IllegalArgumentException: Topic 'cryptocurrency' does not exist as expected
+	at kafka.admin.TopicCommand$.kafka$admin$TopicCommand$$ensureTopicExists(TopicCommand.scala:484)
+	at kafka.admin.TopicCommand$ZookeeperTopicService.deleteTopic(TopicCommand.scala:442)
+	at kafka.admin.TopicCommand$.main(TopicCommand.scala:69)
+	at kafka.admin.TopicCommand.main(TopicCommand.scala)
+ (kafka.admin.TopicCommand$)
+ERROR: java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.CoordinatorNotAvailableException: The coordinator is not available.
+java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.CoordinatorNotAvailableException: The coordinator is not available.
+	at org.apache.kafka.common.internals.KafkaFutureImpl.wrapAndThrow(KafkaFutureImpl.java:45)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.access$000(KafkaFutureImpl.java:32)
+	at org.apache.kafka.common.internals.KafkaFutureImpl$SingleWaiter.await(KafkaFutureImpl.java:89)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:260)
+	at kafka.tools.StreamsResetter.validateNoActiveConsumers(StreamsResetter.java:187)
+	at kafka.tools.StreamsResetter.run(StreamsResetter.java:152)
+	at kafka.tools.StreamsResetter.run(StreamsResetter.java:131)
+	at kafka.tools.StreamsResetter.main(StreamsResetter.java:684)
+Caused by: org.apache.kafka.common.errors.CoordinatorNotAvailableException: The coordinator is not available.

@@ -86,6 +86,7 @@ for y in range(20):
 
     if not X_test.empty:
         any_results_flag = True
+        # get the last entry of the feature set for predicition
         last_entry = last_set.iloc[-1:].iloc[0]
 
         prediction_output = multioutputregressor.predict(X_test)[0]
@@ -98,13 +99,14 @@ for y in range(20):
         new_volume = max(last_entry.volume * volume_rel, 0.0)
 
         new_low, new_high = sorted([new_low, new_high])  # ensure low is smaller high
-        new_low, new_close = sorted([new_low, new_close])  # ensure low is smaller high
-        new_low, new_open = sorted([new_low, new_open])  # ensure low is smaller high
+        new_low, new_close = sorted([new_low, new_close])  # ensure low is smaller close
+        new_low, new_open = sorted([new_low, new_open])  # ensure low is smaller open
 
-        new_open, new_high = sorted([new_open, new_high])  # ensure low is smaller high
-        new_close, new_high = sorted([new_close, new_high])  # ensure low is smaller high
+        new_open, new_high = sorted([new_open, new_high])  # ensure high is greater open
+        new_close, new_high = sorted([new_close, new_high])  # ensure high is greater close
         new_spread = new_high - new_low
 
+        # add new day entry
         last_set = last_set.append(pd.Series({
             "open": round(new_open, 6),
             "close": round(new_close, 6),

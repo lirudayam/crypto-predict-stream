@@ -45,5 +45,5 @@ RUN pip install pandas && \
 
 COPY ./target/spring-websockets.jar /
 
-EXPOSE 8080
+EXPOSE 8080 4444 2181 9092
 CMD ./start.sh
