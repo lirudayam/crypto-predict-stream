@@ -2,12 +2,14 @@
 
 # shut down running systems
 # shellcheck disable=SC2164
+mkdir -p tmp/kafka-logs
+
 cd kafka
 echo 'Start Apache Zookeeper'
-nohup ./bin/zookeeper-server-start.sh -daemon ./config/zookeeper.properties
+nohup ./bin/zookeeper-server-start.sh -daemon config/zookeeper.properties > /dev/null 2>&1 &
 sleep 2
 echo 'Start Apache Kafka'
-nohup ./bin/kafka-server-start.sh -daemon ./config/server.properties
+nohup ./bin/kafka-server-start.sh -daemon config/server.properties > /dev/null 2>&1 &
 
 sleep 5
 

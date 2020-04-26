@@ -4,7 +4,7 @@ MAINTAINER Leo Irudayam
 RUN mkdir -p /kafka
 RUN mkdir -p /python
 
-COPY ./kafka/ /kafka/
+COPY ./kafka-2.5.0-src/ /kafka/
 COPY ./python/ /python/
 #RUN rm /kafka/logs/*
 
@@ -31,6 +31,9 @@ RUN export JAVA_HOME
 RUN apt-get -y install python3.6
 RUN apt-get -y install python3-venv
 RUN apt-get -y install curl
+
+RUN apt-get -y install gradle
+RUN cd kafka && ./gradlew jar -PscalaVersion=2.11.12
 
 COPY ./start.sh /
 RUN chmod +x start.sh
